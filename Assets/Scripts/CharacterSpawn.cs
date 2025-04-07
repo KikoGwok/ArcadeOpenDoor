@@ -5,6 +5,10 @@ public class CharacterSpawn : MonoBehaviour
     public Transform[] spawnPoints; // Array of spawn points
     public GameObject[] doors; // Array of doors
     public GameObject[] doorsopen;
+    public GameObject Gamewin; // Reference to the Gamewin object
+    public GameObject Gameover; // Reference to the Gameover object
+    public GameObject ins; // Reference to the ins object
+
     private int currentSpawnIndex; // Index of the current spawn point
 
     void Start()
@@ -64,12 +68,17 @@ public class CharacterSpawn : MonoBehaviour
             // Disable the opened door and enable the corresponding doorsopen
             doors[doorIndex].SetActive(false);
             doorsopen[doorIndex].SetActive(true);
+            Gameover.SetActive(false);
+            Gamewin.SetActive(true);
+            ins.SetActive(false);
         }
         else
         {
             Debug.Log("Wrong door opened!");
             doors[doorIndex].SetActive(false);
             doorsopen[doorIndex].SetActive(true);
+            Gameover.SetActive(true);
+            ins.SetActive(false);
         }
     }
 
@@ -78,6 +87,8 @@ public class CharacterSpawn : MonoBehaviour
         Debug.Log("Closing door and switching position...");
         doors[doorIndex].SetActive(true);
         doorsopen[doorIndex].SetActive(false);
+        Gamewin.SetActive(false);
+        Gameover.SetActive(false);
         // Randomly select a new spawn point
         currentSpawnIndex = Random.Range(0, spawnPoints.Length);
         SpawnCharacter();
