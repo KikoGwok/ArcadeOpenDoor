@@ -4,14 +4,12 @@ public class CharacterSpawn : MonoBehaviour
 {
     public Transform[] spawnPoints; // Array of spawn points
     public GameObject[] doors; // Array of doors
-    private int correctDoorIndex; // Index of the correct door
     private int currentSpawnIndex; // Index of the current spawn point
 
     void Start()
     {
         // Randomly select a spawn point and the correct door
         currentSpawnIndex = Random.Range(0, spawnPoints.Length);
-        correctDoorIndex = Random.Range(0, doors.Length);
 
         // Spawn the character at the selected spawn point
         SpawnCharacter();
@@ -28,13 +26,13 @@ public class CharacterSpawn : MonoBehaviour
             }
         }
 
-        // Check for door close input (3)
+        // Check for door close input (6)
         if (Input.GetKeyDown(KeyCode.Alpha6))
         {
             CloseDoor();
         }
 
-        // Check for continue input (5)
+        // Check for continue input (7)
         if (Input.GetKeyDown(KeyCode.Alpha7))
         {
             ContinueGame();
@@ -48,7 +46,7 @@ public class CharacterSpawn : MonoBehaviour
 
     void OpenDoor(int doorIndex)
     {
-        if (doorIndex == correctDoorIndex)
+        if (doorIndex == currentSpawnIndex)
         {
             Debug.Log("Correct door opened!");
             // Add logic for correct door opened
@@ -71,6 +69,6 @@ public class CharacterSpawn : MonoBehaviour
     void ContinueGame()
     {
         Debug.Log("Continuing game...");
-        // Add logic to continue the game
+        // Add logic to jump to the next level
     }
 }
