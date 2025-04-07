@@ -4,12 +4,23 @@ public class CharacterSpawn : MonoBehaviour
 {
     public Transform[] spawnPoints; // Array of spawn points
     public GameObject[] doors; // Array of doors
+    public GameObject[] doorsopen;
     private int currentSpawnIndex; // Index of the current spawn point
 
     void Start()
     {
         // Randomly select a spawn point and the correct door
         currentSpawnIndex = Random.Range(0, spawnPoints.Length);
+
+        // Disable all doorsopen and enable all doors
+        foreach (var door in doorsopen)
+        {
+            door.SetActive(false);
+        }
+        foreach (var door in doors)
+        {
+            door.SetActive(true);
+        }
 
         // Spawn the character at the selected spawn point
         SpawnCharacter();
@@ -23,13 +34,14 @@ public class CharacterSpawn : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Alpha1 + i))
             {
                 OpenDoor(i);
+                
             }
-        }
 
-        // Check for door close input (6)
-        if (Input.GetKeyDown(KeyCode.Alpha6))
-        {
-            CloseDoor();
+            // Check for door close input (6)
+            if (Input.GetKeyDown(KeyCode.Alpha6))
+            {
+                CloseDoor(i);
+            }
         }
 
         // Check for continue input (7)
@@ -49,18 +61,23 @@ public class CharacterSpawn : MonoBehaviour
         if (doorIndex == currentSpawnIndex)
         {
             Debug.Log("Correct door opened!");
-            // Add logic for correct door opened
+            // Disable the opened door and enable the corresponding doorsopen
+            doors[doorIndex].SetActive(false);
+            doorsopen[doorIndex].SetActive(true);
         }
         else
         {
             Debug.Log("Wrong door opened!");
-            // Add logic for wrong door opened
+            doors[doorIndex].SetActive(false);
+            doorsopen[doorIndex].SetActive(true);
         }
     }
 
-    void CloseDoor()
+    void CloseDoor(int doorIndex)
     {
         Debug.Log("Closing door and switching position...");
+        doors[doorIndex].SetActive(true);
+        doorsopen[doorIndex].SetActive(false);
         // Randomly select a new spawn point
         currentSpawnIndex = Random.Range(0, spawnPoints.Length);
         SpawnCharacter();

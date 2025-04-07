@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: cd739efaf704bfb469b636c04ac5ccfd
+guid: db95529d448afa44d88322d66c07ac4b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5839245751380810549
-    second: Door close_0
+      213: -7913575611261257363
+    second: Open_Door_Concept_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Door close_0
+      name: Open_Door_Concept_0
       rect:
         serializedVersion: 2
-        x: 674
-        y: 93
-        width: 721
-        height: 1815
+        x: 930
+        y: 2
+        width: 278
+        height: 1075
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bc4ecb04de4d6fea0800000000000000
-      internalID: -5839245751380810549
+      spriteID: d69f393d8e45d2290800000000000000
+      internalID: -7913575611261257363
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 7ae0419bc9c626044a9b67e79502407e
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Door close_0: -5839245751380810549
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
